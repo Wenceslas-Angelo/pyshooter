@@ -11,8 +11,19 @@ running = True
 while running:
     screen.blit(bgImage, (0, -300))
     screen.blit(game.player.image, game.player.rect)
+
+    if game.key_pressed.get(pygame.K_RIGHT):
+        game.player.move_right()
+    elif game.key_pressed.get(pygame.K_LEFT):
+        game.player.move_left()
+
     pygame.display.flip()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            game.key_pressed[event.key] = True
+        elif event.type == pygame.KEYUP:
+            game.key_pressed[event.key] = False
+
