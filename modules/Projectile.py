@@ -16,7 +16,7 @@ class Projectile(pygame.sprite.Sprite):
         self.angle = 0
 
     def remove(self):
-        self.player.all_projectile.remove(self)
+        self.player.all_projectiles.remove(self)
 
     def rotate(self):
         self.angle += 5
@@ -26,6 +26,8 @@ class Projectile(pygame.sprite.Sprite):
     def move(self):
         self.rect.x += self.velocity
         self.rotate()
+        if self.player.game.check_collision(self, self.player.game.all_monsters):
+            self.remove()
         if self.rect.x > 1080:
             self.remove()
 

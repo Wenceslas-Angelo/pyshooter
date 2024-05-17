@@ -12,10 +12,15 @@ while running:
     screen.blit(bgImage, (0, -300))
     screen.blit(game.player.image, game.player.rect)
 
-    for projectile in game.player.all_projectile:
+    for projectile in game.player.all_projectiles:
         projectile.move()
 
-    game.player.all_projectile.draw(screen)
+    game.player.all_projectiles.draw(screen)
+
+    for monster in game.all_monsters:
+        monster.forward()
+
+    game.all_monsters.draw(screen)
 
     if game.key_pressed.get(pygame.K_RIGHT) and game.player.rect.x + game.player.rect.width < screen.get_width():
         game.player.move_right()
@@ -34,5 +39,3 @@ while running:
                 game.player.launch_projectile()
         elif event.type == pygame.KEYUP:
             game.key_pressed[event.key] = False
-
-
