@@ -10,7 +10,10 @@ running = True
 
 while running:
     screen.blit(bgImage, (0, -300))
+
     screen.blit(game.player.image, game.player.rect)
+
+    game.player.update_health_bar(screen)
 
     for projectile in game.player.all_projectiles:
         projectile.move()
@@ -19,6 +22,7 @@ while running:
 
     for monster in game.all_monsters:
         monster.forward()
+        monster.update_health_bar(screen)
 
     game.all_monsters.draw(screen)
 
