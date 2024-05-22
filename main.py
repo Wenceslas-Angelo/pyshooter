@@ -20,7 +20,7 @@ play_button_rect = play_button.get_rect()
 play_button_rect.x = math.ceil(screen.get_width() / 3.2)
 play_button_rect.y = math.ceil(screen.get_height() / 1.7)
 
-game = Game()
+game = Game(screen)
 
 running = True
 
@@ -28,7 +28,7 @@ while running:
     screen.blit(bgImage, (0, -300))
 
     if game.is_playing:
-        game.update(screen)
+        game.update()
     else:
         screen.blit(play_button, play_button_rect)
         screen.blit(banner, banner_rect)
