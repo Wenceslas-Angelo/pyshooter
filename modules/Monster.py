@@ -15,6 +15,7 @@ class Monster(AnimateSprite):
         self.rect.x = 1000 + random.randint(0, 100)
         self.rect.y = 440
         self.velocity = random.randint(1, 3)
+        self.start_animation()
 
     def damage(self, amount):
         self.health -= amount
@@ -27,7 +28,7 @@ class Monster(AnimateSprite):
             self.game.comet_event.attempt_fall()
 
     def update_animation(self):
-        self.animate()
+        self.animate(loop=True)
 
     def update_health_bar(self, surface):
         pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])
