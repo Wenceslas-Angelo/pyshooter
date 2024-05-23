@@ -1,16 +1,16 @@
 import pygame
 import random
+from modules.Animation import AnimateSprite
 
 
-class Monster(pygame.sprite.Sprite):
+class Monster(AnimateSprite):
 
     def __init__(self, game):
-        super().__init__()
+        super().__init__("mummy")
         self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 0.3
-        self.image = pygame.image.load("./assets/mummy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 100)
         self.rect.y = 440
@@ -25,6 +25,9 @@ class Monster(pygame.sprite.Sprite):
         if self.game.comet_event.is_full_loaded():
             self.game.all_monsters.remove(self)
             self.game.comet_event.attempt_fall()
+
+    def update_animation(self):
+        self.animate()
 
     def update_health_bar(self, surface):
         pygame.draw.rect(surface, (60, 63, 60), [self.rect.x + 10, self.rect.y - 20, self.max_health, 5])

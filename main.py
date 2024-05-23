@@ -3,6 +3,7 @@ import math
 from modules.Game import Game
 
 pygame.init()
+
 bgImage = pygame.image.load("./assets/bg.jpg")
 
 pygame.display.set_caption("Shooter Game")

@@ -32,7 +32,10 @@ class Game:
 
         self.player.update_health_bar(self.screen)
 
+        self.player.update_animation()
+
         self.comet_event.update_bar(self.screen)
+
 
         for projectile in self.player.all_projectiles:
             projectile.move()
@@ -42,6 +45,7 @@ class Game:
         for monster in self.all_monsters:
             monster.forward()
             monster.update_health_bar(self.screen)
+            monster.update_animation()
 
         self.all_monsters.draw(self.screen)
 
