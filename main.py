@@ -4,6 +4,10 @@ from modules.Game import Game
 
 pygame.init()
 
+clock = pygame.time.Clock()
+
+FPS = 30
+
 bgImage = pygame.image.load("./assets/bg.jpg")
 
 pygame.display.set_caption("Shooter Game")
@@ -49,3 +53,5 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if play_button_rect.collidepoint(event.pos):
                 game.start()
+
+    clock.tick(FPS)

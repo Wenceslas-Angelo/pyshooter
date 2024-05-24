@@ -18,7 +18,7 @@ class Comet(pygame.sprite.Sprite):
         self.game.comet_event.all_comets.remove(self)
         if len(self.game.comet_event.all_comets) == 0:
             self.game.comet_event.reset_percent()
-            self.game.spawn_monster()
+            self.game.start()
 
     def fall(self):
         self.rect.y += self.velocity

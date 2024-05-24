@@ -5,24 +5,28 @@ from modules.Animation import AnimateSprite
 
 class Monster(AnimateSprite):
 
-    def __init__(self, game):
-        super().__init__("mummy")
+    def __init__(self, game, name, size, offset=0):
+        super().__init__(name, size)
         self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 0.3
         self.rect = self.image.get_rect()
         self.rect.x = 1000 + random.randint(0, 100)
-        self.rect.y = 440
-        self.velocity = random.randint(1, 3)
+        self.rect.y = 440 - offset
+
         self.start_animation()
+
+    def set_speed(self, speed):
+        self.default_speed = speed
+        self.velocity = random.randint(1, 3)
 
     def damage(self, amount):
         self.health -= amount
         if self.health <= 0:
             self.rect.x = 1000 + random.randint(0, 100)
             self.health = self.max_health
-            self.velocity = random.randint(1, 3)
+            self.velocity = random.randint(1, self.default_speed)
         if self.game.comet_event.is_full_loaded():
             self.game.all_monsters.remove(self)
             self.game.comet_event.attempt_fall()
