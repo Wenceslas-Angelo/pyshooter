@@ -3,12 +3,14 @@ from modules.Player import Player
 from modules.Mummy import Mummy
 from modules.Alien import Alien
 from modules.Comet_Event import CometFallEvent
+from modules.Sounds import SoundManager
 
 
 class Game:
 
     def __init__(self, screen):
         self.screen = screen
+        self.sound_manager = SoundManager()
         self.is_playing = False
         self.all_players = pygame.sprite.Group()
         self.player = Player(self)
@@ -31,6 +33,7 @@ class Game:
         self.comet_event.reset_percent()
         self.is_playing = False
         self.score = 0
+        self.sound_manager.play("game_over")
 
     def add_score(self, points=10):
         self.score += points
