@@ -9,3 +9,4 @@ class Alien(Monster):
         self.max_health = 250
         self.attack = 0.8
         self.set_speed(1)
+        self.set_loot_amount(80)

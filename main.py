@@ -6,7 +6,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-FPS = 30
+FPS = 50
 
 bgImage = pygame.image.load("./assets/bg.jpg")
 

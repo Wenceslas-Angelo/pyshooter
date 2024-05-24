@@ -32,6 +32,9 @@ class Game:
         self.is_playing = False
         self.score = 0
 
+    def add_score(self, points=10):
+        self.score += points
+
     def update(self):
         score_text = self.font.render(f"SCORE: {self.score}", 1, (0, 0, 0))
         self.screen.blit(score_text, (20, 20))
